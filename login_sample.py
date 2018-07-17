@@ -66,6 +66,7 @@ if __name__ == '__main__':
 def client():
     app.Testing = True
     client = app.test_client()
+    client.post('/user', data=dict(userName='pqrs', passWord='456'), follow_redirects=True)
 
     yield client
 
@@ -79,7 +80,7 @@ def client():
 
 def test_SampleApi_get(client):
 
-    client.post('/user', data=dict(userName='pqrs', passWord='456'), follow_redirects=True)
+    # client.post('/user', data=dict(userName='pqrs', passWord='456'), follow_redirects=True)
     rv = client.delete('/user', data=dict(userArg='pqrs'))
 
     print("rv", rv)
